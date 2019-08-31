@@ -6,6 +6,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Compra Fácil',
       theme: ThemeData(
         primarySwatch: Colors.green,
@@ -21,8 +22,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-  void criaCarrinho(){
+  void criaCarrinho() {
     print('Criando carrinho');
   }
 
@@ -35,11 +35,30 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           Text(
-            'Escolha uma das opções abaixo:',
+            'Guanabara:',
             style: TextStyle(
-              fontSize: 22,
+              fontSize: 40,
             ),
           ),
+          
+          
+          Container(
+            width: double.infinity,
+            height: 100,
+            child: Card(
+              color: Colors.green,
+              child: Text(
+                'Total',
+                style: TextStyle(
+                  fontSize: 22,
+                ),
+              ),
+            ),            
+          ),
+
+
+
+
           RaisedButton(
             child: Text('Criar carrinho'),
             onPressed: criaCarrinho,
