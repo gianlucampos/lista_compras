@@ -40,33 +40,50 @@ class _MyHomePageState extends State<MyHomePage> {
               fontSize: 40,
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: 100,
-            child: Card(
-              color: Colors.green,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    child: Text('Total'),
-                    width: 100,
-                    height: 100,
-                  ),
-                  Spacer(),
-                  Container(
-                    child: Text('Comprado'),
-                    color: Colors.green,
-                    width: 100,
-                    height: 100,
-                  ),
-                  Spacer(),
-                  Container(
-                    child: Text('Restante'),
-                    color: Colors.green,
-                    width: 100,
-                    height: 100,
-                  ),
-                ],
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Container(
+              width: double.infinity,
+              height: 100,
+              child: Card(
+                color: Colors.green,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          child: Text('Total', style: TextStyle(fontSize: 22)),
+                        ),
+                        Container(
+                          child: Text('R\$ 8.00'),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          child:
+                              Text('Comprado', style: TextStyle(fontSize: 22)),
+                        ),
+                        Container(
+                          child: Text('R\$ 5.00'),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          child:
+                              Text('Restante', style: TextStyle(fontSize: 22)),
+                        ),
+                        Container(
+                          child: Text('R\$ 3.00'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
