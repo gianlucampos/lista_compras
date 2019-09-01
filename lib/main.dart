@@ -40,25 +40,36 @@ class _MyHomePageState extends State<MyHomePage> {
               fontSize: 40,
             ),
           ),
-          
-          
           Container(
             width: double.infinity,
             height: 100,
             child: Card(
               color: Colors.green,
-              child: Text(
-                'Total',
-                style: TextStyle(
-                  fontSize: 22,
-                ),
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    child: Text('Total'),
+                    width: 100,
+                    height: 100,
+                  ),
+                  Spacer(),
+                  Container(
+                    child: Text('Comprado'),
+                    color: Colors.green,
+                    width: 100,
+                    height: 100,
+                  ),
+                  Spacer(),
+                  Container(
+                    child: Text('Restante'),
+                    color: Colors.green,
+                    width: 100,
+                    height: 100,
+                  ),
+                ],
               ),
-            ),            
+            ),
           ),
-
-
-
-
           RaisedButton(
             child: Text('Criar carrinho'),
             onPressed: criaCarrinho,
