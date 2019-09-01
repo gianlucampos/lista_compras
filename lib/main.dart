@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/widgets/comprado.dart';
+import 'package:my_app/widgets/restante.dart';
+import 'package:my_app/widgets/total.dart';
 
 void main() => runApp(MyApp());
 
@@ -50,38 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Container(
-                          child: Text('Total', style: TextStyle(fontSize: 22)),
-                        ),
-                        Container(
-                          child: Text('R\$ 8.00'),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Container(
-                          child:
-                              Text('Comprado', style: TextStyle(fontSize: 22)),
-                        ),
-                        Container(
-                          child: Text('R\$ 5.00'),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Container(
-                          child:
-                              Text('Restante', style: TextStyle(fontSize: 22)),
-                        ),
-                        Container(
-                          child: Text('R\$ 3.00'),
-                        ),
-                      ],
-                    ),
+                    Total(),
+                    Comprado(),
+                    Restante(),
                   ],
                 ),
               ),
