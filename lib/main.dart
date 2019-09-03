@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/widgets/comprado.dart';
-import 'package:my_app/widgets/restante.dart';
-import 'package:my_app/widgets/total.dart';
+import 'package:my_app/widgets/totalizador.dart';
 
 void main() => runApp(MyApp());
 
@@ -43,24 +41,18 @@ class _MyHomePageState extends State<MyHomePage> {
               fontSize: 40,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Container(
-              width: double.infinity,
-              height: 100,
-              child: Card(
-                color: Colors.green,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Totalizador(),
+          Container(
+              height: 300,
+              child: SingleChildScrollView(
+                child: Column(
                   children: <Widget>[
-                    Total(),
-                    Comprado(),
-                    Restante(),
+                    Text('Hamburger'),
+                    Text('Hamburger'),
+                    Text('Hamburger'),
                   ],
                 ),
-              ),
-            ),
-          ),
+              )),
           RaisedButton(
             child: Text('Criar carrinho'),
             onPressed: criaCarrinho,
