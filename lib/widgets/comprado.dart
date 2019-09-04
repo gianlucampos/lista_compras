@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Comprado extends StatefulWidget {
   @override
@@ -15,7 +16,8 @@ class _CompradoState extends State<Comprado> {
           child: Text('Comprado',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
         ),
-        Text('R\$ 5.00', style: TextStyle(color: Colors.white)),
+        Text('R\$ ${NumberFormat("#0.00").format(5.00)}',
+            style: TextStyle(color: Colors.white)),
       ],
     );
   }

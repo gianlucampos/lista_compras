@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Total extends StatefulWidget {
   @override
@@ -15,7 +16,8 @@ class _TotalState extends State<Total> {
           child: Text('Total',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
         ),
-        Text('R\$ 8.00', style: TextStyle(color: Colors.white)),
+        Text('R\$ ${NumberFormat("#0.00").format(8.00)}',
+            style: TextStyle(color: Colors.white)),
       ],
     );
   }

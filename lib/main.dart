@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/widgets/totalizador.dart';
+import 'package:intl/intl.dart';
+
 
 import 'models/item.dart';
 
@@ -31,6 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Item> items = [
     Item('Desodorante', 10.00),
+    Item('Shampoo', 15.00),
+    Item('Shampoo', 15.00),
+    Item('Shampoo', 15.00),
     Item('Shampoo', 15.00),
   ];
 
@@ -83,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               Text(
-                                'R\$ ${item.preco}',
+                                'R\$ ${NumberFormat("00.00").format(item.preco)}',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
