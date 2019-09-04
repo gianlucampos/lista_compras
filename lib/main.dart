@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/widgets/totalizador.dart';
 
+import 'models/item.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -27,6 +29,11 @@ class _MyHomePageState extends State<MyHomePage> {
     print('Criando carrinho');
   }
 
+  final List<Item> items = [
+    Item('Desodorante', 10.00),
+    Item('Shampoo', 15.00),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,11 +53,48 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 300,
               child: SingleChildScrollView(
                 child: Column(
-                  children: <Widget>[
-                    Text('Hamburger'),
-                    Text('Hamburger'),
-                    Text('Hamburger'),
-                  ],
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: items.map((item) {
+                    return Card(
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 15,
+                            ),
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              'Imagem',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.blue),
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                item.nome,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                'R\$ ${item.preco}',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  }).toList(),
                 ),
               )),
           RaisedButton(
