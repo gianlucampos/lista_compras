@@ -11,11 +11,11 @@ class _RestanteState extends State<Restante> {
     return Column(
       children: <Widget>[
         Container(
-          child: Text('Restante', style: TextStyle(fontSize: 22)),
+          margin: EdgeInsets.symmetric(vertical: 15),
+          child: Text('Restante',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
         ),
-        Container(
-          child: Text('R\$ 3.00'),
-        ),
+        Text('R\$ 3.00', style: TextStyle(color: Colors.white)),
       ],
     );
   }

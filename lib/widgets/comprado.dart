@@ -11,11 +11,11 @@ class _CompradoState extends State<Comprado> {
     return Column(
       children: <Widget>[
         Container(
-          child: Text('Comprado', style: TextStyle(fontSize: 22)),
+          margin: EdgeInsets.symmetric(vertical: 15),
+          child: Text('Comprado',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
         ),
-        Container(
-          child: Text('R\$ 5.00'),
-        ),
+        Text('R\$ 5.00', style: TextStyle(color: Colors.white)),
       ],
     );
   }

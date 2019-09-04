@@ -12,23 +12,24 @@ class Totalizador extends StatefulWidget {
 class _TotalizadorState extends State<Totalizador> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Container(
-              width: double.infinity,
-              height: 100,
-              child: Card(
-                color: Colors.green,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Total(),
-                    Comprado(),
-                    Restante(),
-                  ],
-                ),
-              ),
-            ),
-          );
+    return Container(
+      margin: EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 15,
+      ),
+      width: double.infinity,
+      height: 100,
+      child: Card(
+        color: Colors.green,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Total(),
+            Comprado(),
+            Restante(),
+          ],
+        ),
+      ),
+    );
   }
 }

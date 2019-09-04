@@ -11,11 +11,11 @@ class _TotalState extends State<Total> {
     return Column(
       children: <Widget>[
         Container(
-          child: Text('Total', style: TextStyle(fontSize: 22)),
+          margin: EdgeInsets.symmetric(vertical: 15),
+          child: Text('Total',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
         ),
-        Container(
-          child: Text('R\$ 8.00'),
-        ),
+        Text('R\$ 8.00', style: TextStyle(color: Colors.white)),
       ],
     );
   }
