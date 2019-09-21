@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/widgets/totalizador.dart';
 import 'package:intl/intl.dart';
+import 'package:my_app/models/Categoria.dart';
+import 'package:my_app/widgets/totalizador.dart';
 
-
-import 'models/item.dart';
+import 'models/Produto.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,12 +31,12 @@ class _MyHomePageState extends State<MyHomePage> {
     print('Criando carrinho');
   }
 
-  final List<Item> items = [
-    Item('Desodorante', 10.00),
-    Item('Shampoo', 15.00),
-    Item('Shampoo', 15.00),
-    Item('Shampoo', 15.00),
-    Item('Shampoo', 15.00),
+  final List<Produto> items = [
+    Produto('Desodorante', 10.00, 1, Categoria('Higine')),
+    Produto('Gel', 10.00, 1, Categoria('Higine')),
+    Produto('Shampoo', 10.00, 1, Categoria('Higine')),
+    Produto('Talco', 10.00, 1, Categoria('Higine')),
+    Produto('Perfume', 10.00, 1, Categoria('Higine')),
   ];
 
   @override
@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           Text(
-            'Guanabara:',
+            'Guanabara',
             style: TextStyle(
               fontSize: 40,
             ),
