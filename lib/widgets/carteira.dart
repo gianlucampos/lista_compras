@@ -3,8 +3,9 @@ import 'package:my_app/widgets/totalizador.dart';
 
 class Carteira extends StatelessWidget {
   final double valorDisponivel;
+  final double valorCarrinho;
 
-  Carteira(this.valorDisponivel);
+  Carteira(this.valorDisponivel, this.valorCarrinho);
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,9 @@ class Carteira extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Totalizador('Carteira', 8.00),
-            Totalizador('Total', 5.00),
-            Totalizador('Saldo', 3.00),
+            Totalizador('Carteira', valorDisponivel),
+            Totalizador('Total', valorCarrinho),
+            Totalizador('Saldo', valorDisponivel - valorCarrinho),
           ],
         ),
       ),

@@ -27,9 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void criaCarrinho() {
-    print('Criando carrinho');
-  }
 
   final List<Produto> listaItems = [
     Produto('Desodorante', 10.00, 1, Categoria('Higine')),
@@ -41,6 +38,20 @@ class _MyHomePageState extends State<MyHomePage> {
     Produto('Escova', 10.00, 1, Categoria('Higine')),
     Produto('Pomada', 10.00, 1, Categoria('Higine')),
   ];
+
+
+  double retornaTotalCarrinho(List<Produto> lista) {
+    double total = 0.00;
+    for (Produto produto in lista) {
+      total += (produto.preco * produto.quantidade);
+    }
+    return total;
+  }
+
+  void criaCarrinho() {
+    print('Criando carrinho');
+    print(listaItems[3].nome);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontSize: 40,
               ),
             ),
-            Carteira(8.00),
+            Carteira(100.00, retornaTotalCarrinho(listaItems)),
             ListProdutos(listaItems),
           ],
         ),
