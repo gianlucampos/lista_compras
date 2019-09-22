@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/models/Categoria.dart';
+import 'package:my_app/widgets/carteira.dart';
 import 'package:my_app/widgets/listProdutos.dart';
-import 'package:my_app/widgets/totalizador.dart';
 
 import 'models/Produto.dart';
 
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
               fontSize: 40,
             ),
           ),
-          Totalizador(),
+          Carteira(),
           ListProdutos(listaItems),
         ],
       ),
