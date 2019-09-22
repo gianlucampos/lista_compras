@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/widgets/totalizador.dart';
 
-class Carteira extends StatefulWidget {
-  @override
-  _CarteiraState createState() => _CarteiraState();
-}
+class Carteira extends StatelessWidget {
+  final double valorDisponivel;
 
-class _CarteiraState extends State<Carteira> {
+  Carteira(this.valorDisponivel);
+
   @override
   Widget build(BuildContext context) {
     return Container(

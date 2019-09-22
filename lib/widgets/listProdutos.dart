@@ -2,16 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_app/models/Produto.dart';
 
-class ListProdutos extends StatefulWidget {
+class ListProdutos extends StatelessWidget {
   final List<Produto> listaProdutos;
 
   ListProdutos(this.listaProdutos);
 
-  @override
-  _ListProdutosState createState() => _ListProdutosState();
-}
-
-class _ListProdutosState extends State<ListProdutos> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +14,7 @@ class _ListProdutosState extends State<ListProdutos> {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: widget.listaProdutos.map((item) {
+            children: listaProdutos.map((item) {
               return Card(
                 child: Row(
                   children: <Widget>[

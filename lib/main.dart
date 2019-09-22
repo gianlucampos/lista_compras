@@ -45,28 +45,27 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Lista de Compras'),
-      ),
-      body: Column(
-        children: [
-          Text(
-            'Guanabara',
-            style: TextStyle(
-              fontSize: 40,
+        appBar: AppBar(
+          title: Text('Lista de Compras'),
+        ),
+        body: Column(
+          children: [
+            Text(
+              'Guanabara',
+              style: TextStyle(
+                fontSize: 40,
+              ),
             ),
-          ),
-          Carteira(),
-          ListProdutos(listaItems),
-        ],
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: RaisedButton(
-        child: Text('Criar carrinho'),
-        onPressed: criaCarrinho,
-        color: Colors.green,
-        disabledColor: Colors.green,
-      )
-    );
+            Carteira(8.00),
+            ListProdutos(listaItems),
+          ],
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: RaisedButton(
+          child: Text('Criar carrinho'),
+          onPressed: criaCarrinho,
+          color: Colors.green,
+          disabledColor: Colors.green,
+        ));
   }
 }
