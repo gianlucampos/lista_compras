@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:my_app/models/Categoria.dart';
+import 'package:my_app/widgets/listProdutos.dart';
 import 'package:my_app/widgets/totalizador.dart';
 
 import 'models/Produto.dart';
@@ -31,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
     print('Criando carrinho');
   }
 
-  final List<Produto> items = [
+  final List<Produto> listaItems = [
     Produto('Desodorante', 10.00, 1, Categoria('Higine')),
     Produto('Gel', 10.00, 1, Categoria('Higine')),
     Produto('Shampoo', 10.00, 1, Categoria('Higine')),
@@ -57,54 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Totalizador(),
-          Container(
-              height: 360,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: items.map((item) {
-                    return Card(
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 15,
-                            ),
-                            padding: EdgeInsets.all(10),
-                            child: Text(
-                              'Imagem',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.blue),
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                item.nome,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                'R\$ ${NumberFormat("00.00").format(item.preco)}',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    );
-                  }).toList(),
-                ),
-              )),
+          ListProdutos(listaItems),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
