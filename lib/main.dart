@@ -37,6 +37,9 @@ class _MyHomePageState extends State<MyHomePage> {
     Produto('Shampoo', 10.00, 1, Categoria('Higine')),
     Produto('Talco', 10.00, 1, Categoria('Higine')),
     Produto('Perfume', 10.00, 1, Categoria('Higine')),
+    Produto('Condicionador', 10.00, 1, Categoria('Higine')),
+    Produto('Escova', 10.00, 1, Categoria('Higine')),
+    Produto('Pomada', 10.00, 1, Categoria('Higine')),
   ];
 
   @override
@@ -55,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Totalizador(),
           Container(
-              height: 300,
+              height: 360,
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,14 +105,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   }).toList(),
                 ),
               )),
-          RaisedButton(
-            child: Text('Criar carrinho'),
-            onPressed: criaCarrinho,
-            color: Colors.green,
-            disabledColor: Colors.green,
-          )
         ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: RaisedButton(
+        child: Text('Criar carrinho'),
+        onPressed: criaCarrinho,
+        color: Colors.green,
+        disabledColor: Colors.green,
+      )
     );
   }
 }
