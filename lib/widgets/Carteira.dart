@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/widgets/totalizador.dart';
+import 'package:my_app/widgets/Totalizador.dart';
 
 class Carteira extends StatelessWidget {
   final double valorDisponivel;

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/models/Categoria.dart';
-import 'package:my_app/widgets/carteira.dart';
-import 'package:my_app/widgets/listProdutos.dart';
+import 'package:my_app/widgets/NovoProduto.dart';
+import 'package:my_app/widgets/Carteira.dart';
+import 'package:my_app/widgets/ListProdutos.dart';
 
 import 'models/Produto.dart';
 
@@ -27,7 +28,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final List<Produto> listaItems = [
     Produto('Desodorante', 10.00, 1, Categoria('Higine')),
     Produto('Gel', 10.00, 1, Categoria('Higine')),
@@ -39,7 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
     Produto('Pomada', 10.00, 1, Categoria('Higine')),
   ];
 
-
   double retornaTotalCarrinho(List<Produto> lista) {
     double total = 0.00;
     for (Produto produto in lista) {
@@ -48,9 +47,24 @@ class _MyHomePageState extends State<MyHomePage> {
     return total;
   }
 
-  void criaCarrinho() {
-    print('Criando carrinho');
-    print(listaItems[3].nome);
+  void criaItem(BuildContext ctx) {
+    showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return GestureDetector(
+            onTap: () {},
+            child: null,
+            behavior: HitTestBehavior.opaque,
+          );
+        });
+  }
+
+  void addItemCarrinho(
+      String nome, double preco, double quantidade, Categoria categoria) {
+    final novoProduto = Produto(nome, preco, quantidade, categoria);
+    setState(() {
+      listaItems.add(novoProduto);
+    });
   }
 
   @override
@@ -74,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: RaisedButton(
           child: Text('Criar carrinho'),
-          onPressed: criaCarrinho,
+          onPressed: () => criaItem(context),
           color: Colors.green,
           disabledColor: Colors.green,
         ));
