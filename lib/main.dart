@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/models/Categoria.dart';
-import 'package:my_app/widgets/NovoProduto.dart';
 import 'package:my_app/widgets/Carteira.dart';
 import 'package:my_app/widgets/ListProdutos.dart';
+import 'package:my_app/widgets/NovoProduto.dart';
 
 import 'models/Produto.dart';
 
@@ -29,14 +29,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Produto> listaItems = [
-    Produto('Desodorante', 10.00, 1, Categoria('Higine')),
-    Produto('Gel', 10.00, 1, Categoria('Higine')),
-    Produto('Shampoo', 10.00, 1, Categoria('Higine')),
-    Produto('Talco', 10.00, 1, Categoria('Higine')),
-    Produto('Perfume', 10.00, 1, Categoria('Higine')),
-    Produto('Condicionador', 10.00, 1, Categoria('Higine')),
-    Produto('Escova', 10.00, 1, Categoria('Higine')),
-    Produto('Pomada', 10.00, 1, Categoria('Higine')),
+//    Produto('Desodorante', 10.00, 1, Categoria('Higine')),
+//    Produto('Gel', 10.00, 1, Categoria('Higine')),
+//    Produto('Shampoo', 10.00, 1, Categoria('Higine')),
+//    Produto('Talco', 10.00, 1, Categoria('Higine')),
+//    Produto('Perfume', 10.00, 1, Categoria('Higine')),
+//    Produto('Condicionador', 10.00, 1, Categoria('Higine')),
+//    Produto('Escova', 10.00, 1, Categoria('Higine')),
+//    Produto('Pomada', 10.00, 1, Categoria('Higine')),
   ];
 
   double retornaTotalCarrinho(List<Produto> lista) {
@@ -47,24 +47,24 @@ class _MyHomePageState extends State<MyHomePage> {
     return total;
   }
 
-  void criaItem(BuildContext ctx) {
-    showModalBottomSheet(
-        context: ctx,
-        builder: (_) {
-          return GestureDetector(
-            onTap: () {},
-            child: null,
-            behavior: HitTestBehavior.opaque,
-          );
-        });
-  }
-
   void addItemCarrinho(
       String nome, double preco, double quantidade, Categoria categoria) {
     final novoProduto = Produto(nome, preco, quantidade, categoria);
     setState(() {
       listaItems.add(novoProduto);
     });
+  }
+
+  void criaItem(BuildContext ctx) {
+    showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return GestureDetector(
+            onTap: () {},
+            child: NovoProduto(addItemCarrinho),
+            behavior: HitTestBehavior.opaque,
+          );
+        });
   }
 
   @override
