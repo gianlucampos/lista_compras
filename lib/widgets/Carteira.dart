@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/widgets/Totalizador.dart';
 
-class Carteira extends StatelessWidget {
+class Carteira extends StatefulWidget {
   final double valorDisponivel;
   final double valorCarrinho;
 
   Carteira(this.valorDisponivel, this.valorCarrinho);
 
+  @override
+  _CarteiraState createState() => _CarteiraState();
+}
+
+class _CarteiraState extends State<Carteira> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,9 +26,9 @@ class Carteira extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Totalizador('Carteira', valorDisponivel),
-            Totalizador('Total', valorCarrinho),
-            Totalizador('Saldo', valorDisponivel - valorCarrinho),
+            Totalizador('Carteira', widget.valorDisponivel),
+            Totalizador('Total', widget.valorCarrinho),
+            Totalizador('Saldo', widget.valorDisponivel - widget.valorCarrinho),
           ],
         ),
       ),

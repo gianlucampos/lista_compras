@@ -29,8 +29,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Produto> listaItems = [
-//    Produto('Desodorante', 10.00, 1, Categoria('Higine')),
-//    Produto('Gel', 10.00, 1, Categoria('Higine')),
+    Produto('Desodorante', 10.00, 1, Categoria('Higine')),
+    Produto('Gel', 10.00, 1, Categoria('Higine')),
 //    Produto('Shampoo', 10.00, 1, Categoria('Higine')),
 //    Produto('Talco', 10.00, 1, Categoria('Higine')),
 //    Produto('Perfume', 10.00, 1, Categoria('Higine')),
