@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_app/models/Produto.dart';
 
+//Deve ser stateless
+
 class ListProdutos extends StatefulWidget {
   final List<Produto> listaProdutos;
+  final Function removeProduto;
 
-  ListProdutos(this.listaProdutos);
+  ListProdutos(this.listaProdutos, this.removeProduto);
 
   @override
   _ListProdutosState createState() => _ListProdutosState();
@@ -71,9 +74,7 @@ class _ListProdutosState extends State<ListProdutos> {
                       ),
                       onPressed: () {
                         print('Removido ${item.nome} da lista');
-                        setState(() {
-                          widget.listaProdutos.remove(item);
-                        });
+                        widget.removeProduto(item.id);
                       },
                     ),
                   ),

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +25,7 @@ class _NovoProdutoState extends State<NovoProduto> {
     final unidadeDigitada = double.parse(_unidadeProduto.text);
 
     widget.addProduto(
+      Random().toString(),
       nomeDigitado,
       precoDigitado,
       unidadeDigitada,

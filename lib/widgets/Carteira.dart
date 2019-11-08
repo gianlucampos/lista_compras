@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/widgets/Totalizador.dart';
 
+//Deve ser stateless
+
 class Carteira extends StatefulWidget {
   final double valorDisponivel;
   final double valorCarrinho;
 
   Carteira(this.valorDisponivel, this.valorCarrinho);
+  Carteira.comvalor({this.valorDisponivel=100, this.valorCarrinho});
 
   @override
   _CarteiraState createState() => _CarteiraState();

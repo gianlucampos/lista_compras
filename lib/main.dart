@@ -29,8 +29,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Produto> listaItems = [
-    Produto('Desodorante', 10.00, 1, Categoria('Higine')),
-    Produto('Gel', 10.00, 1, Categoria('Higine')),
+    Produto('1', 'Desodorante', 10.00, 1, Categoria('Higine')),
+    Produto('2', 'Gel', 10.00, 1, Categoria('Higine')),
 //    Produto('Shampoo', 10.00, 1, Categoria('Higine')),
 //    Produto('Talco', 10.00, 1, Categoria('Higine')),
 //    Produto('Perfume', 10.00, 1, Categoria('Higine')),
@@ -39,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
 //    Produto('Pomada', 10.00, 1, Categoria('Higine')),
   ];
 
+//Colocar isso dentro do widget Totalizador
   double retornaTotalCarrinho(List<Produto> lista) {
     double total = 0.00;
     for (Produto produto in lista) {
@@ -47,9 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return total;
   }
 
-  void addItemCarrinho(
-      String nome, double preco, double quantidade, Categoria categoria) {
-    final novoProduto = Produto(nome, preco, quantidade, categoria);
+  void addItemCarrinho(String id, String nome, double preco, double quantidade,
+      Categoria categoria) {
+    final novoProduto = Produto(id, nome, preco, quantidade, categoria);
     setState(() {
       listaItems.add(novoProduto);
     });
@@ -67,6 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
+  void removeProduto(String id) {
+    setState(() {
+      listaItems.removeWhere((tx) => tx.id == id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Carteira(100.00, retornaTotalCarrinho(listaItems)),
-            ListProdutos(listaItems),
+            ListProdutos(listaItems,removeProduto),
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
