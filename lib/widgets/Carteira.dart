@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/widgets/Totalizador.dart';
+
+import 'Totalizador.dart';
 
 //Deve ser stateless
 

@@ -1,4 +1,4 @@
-import 'package:my_app/models/Categoria.dart';
+import 'Categoria.dart';
 
 class Produto {
   String id;

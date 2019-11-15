@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/models/Categoria.dart';
-import 'package:my_app/widgets/Carteira.dart';
-import 'package:my_app/widgets/ListProdutos.dart';
-import 'package:my_app/widgets/NovoProduto.dart';
 
+import 'models/Categoria.dart';
 import 'models/Produto.dart';
+import 'widgets/Carteira.dart';
+import 'widgets/ListProdutos.dart';
+import 'widgets/NovoProduto.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,12 +31,12 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Produto> listaItems = [
     Produto('1', 'Desodorante', 10.00, 1, Categoria('Higine')),
     Produto('2', 'Gel', 10.00, 1, Categoria('Higine')),
-//    Produto('Shampoo', 10.00, 1, Categoria('Higine')),
-//    Produto('Talco', 10.00, 1, Categoria('Higine')),
-//    Produto('Perfume', 10.00, 1, Categoria('Higine')),
-//    Produto('Condicionador', 10.00, 1, Categoria('Higine')),
-//    Produto('Escova', 10.00, 1, Categoria('Higine')),
-//    Produto('Pomada', 10.00, 1, Categoria('Higine')),
+    Produto('3', 'Shampoo', 10.00, 1, Categoria('Higine')),
+    Produto('4', 'Talco', 10.00, 1, Categoria('Higine')),
+    Produto('5', 'Perfume', 10.00, 1, Categoria('Higine')),
+    Produto('6', 'Condicionador', 10.00, 1, Categoria('Higine')),
+    Produto('7', 'Escova', 10.00, 1, Categoria('Higine')),
+    Produto('8', 'Pomada', 10.00, 1, Categoria('Higine')),
   ];
 
 //Colocar isso dentro do widget Totalizador
