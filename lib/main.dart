@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Carteira(100.00, retornaTotalCarrinho(listaItems)),
-            ListProdutos(listaItems,removeProduto),
+            ListProdutos(listaItems, removeProduto),
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
