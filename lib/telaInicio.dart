@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lista_compras/cadProduto.dart';
 import 'package:lista_compras/widgets/Totalizador.dart';
 
 class TelaInicio extends StatelessWidget {
@@ -15,7 +16,8 @@ class TelaInicio extends StatelessWidget {
         alignment: Alignment(1.00, 0.75),
         child: FloatingActionButton(
           onPressed: () {
-            print('Add item');
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => CadProduto()));
           },
           child: Icon(Icons.add),
           backgroundColor: Colors.blue,
