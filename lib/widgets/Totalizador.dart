@@ -1,23 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class Totalizador extends StatelessWidget {
-  final String nome;
-  final double valor;
-
-  Totalizador(this.nome, this.valor);
-
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.symmetric(vertical: 15),
-          child: Text(nome,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+          width: MediaQuery
+              .of(context)
+              .size
+              .width * 0.6,
+          child: Row(
+            children: <Widget>[
+              Icon(
+                Icons.attach_money,
+                size: 40,
+              ),
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[Text('Total (0)'), Text('R\$ 0,00')])
+            ],
+          ),
         ),
-        Text('R\$ ${NumberFormat("#0.00").format(valor)}',
-            style: TextStyle(color: Colors.white)),
+        Container(
+          child: Row(
+            children: <Widget>[
+              Icon(
+                Icons.shopping_cart,
+                size: 40,
+              ),
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[Text('Carrinho (0)'), Text('R\$ 0,00')])
+            ],
+          ),
+        ),
       ],
     );
   }
