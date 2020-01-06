@@ -15,33 +15,23 @@ enum Unidade {
   PACOTE
 }
 
-getDescricao(Unidade unidade) {
-  switch (unidade) {
-    case Unidade.UNIDADE:
-      return 'un';
-    case Unidade.DEZENA:
-      return 'dz';
-    case Unidade.MILILITRO:
-      return 'ml';
-    case Unidade.LITRO:
-      return 'L';
-    case Unidade.KILOGRAMA:
-      return 'kg';
-    case Unidade.GRAMA:
-      return 'g';
-    case Unidade.CAIXA:
-      return 'Caixa';
-    case Unidade.EMBALAGEM:
-      return 'Embalagem';
-    case Unidade.GALAO:
-      return 'Galão';
-    case Unidade.GARRAFA:
-      return 'Garrafa';
-    case Unidade.LATA:
-      return 'Lata';
-    case Unidade.PACOTE:
-      return 'Pacote';
-  }
+extension Ext_Unidade on Unidade {
+  static const names = {
+    Unidade.UNIDADE: 'un',
+    Unidade.DEZENA: 'dz',
+    Unidade.MILILITRO: 'ml',
+    Unidade.LITRO: 'L',
+    Unidade.KILOGRAMA: 'Kg',
+    Unidade.GRAMA: 'g',
+    Unidade.CAIXA: 'Caixa',
+    Unidade.EMBALAGEM: 'Embalagem',
+    Unidade.GALAO: 'Galão',
+    Unidade.GARRAFA: 'Garrafa',
+    Unidade.LATA: 'Lata',
+    Unidade.PACOTE: 'Pacote'
+  };
+
+  String get name => names[this];
 }
 
 class Produto {

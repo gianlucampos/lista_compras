@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:lista_compras/widgets/DropDownUnidade.dart';
 
 class CadProduto extends StatelessWidget {
   @override
@@ -42,13 +43,7 @@ class CadProduto extends StatelessWidget {
                         .of(context)
                         .size
                         .width * 0.48,
-                    child: TextField(
-                      decoration:
-                      InputDecoration(labelText: 'Unidade', hintText: '1'),
-                      keyboardType: TextInputType.number,
-                      controller: null,
-                      onSubmitted: (_) => null,
-                    ),
+                      child: DropDownUnidade()
                   ),
                 ],
               ),
