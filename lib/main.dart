@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lista_compras/telaInicio.dart';
+
+import './telaInicio.dart';
+import 'tests/testeWidgets.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,6 +15,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       home: TelaInicio(),
+      routes: {
+        'Testes': (context) => TesteApp(),
+      },
     );
   }
 }
