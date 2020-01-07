@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:lista_compras/widgets/DropDownCategoria.dart';
 import 'package:lista_compras/widgets/DropDownUnidade.dart';
 
 class CadProduto extends StatelessWidget {
@@ -39,12 +40,11 @@ class CadProduto extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width * 0.48,
-                      child: DropDownUnidade()
-                  ),
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width * 0.48,
+                      child: DropDownUnidade()),
                 ],
               ),
               Row(
@@ -84,11 +84,23 @@ class CadProduto extends StatelessWidget {
                   ),
                 ],
               ),
-              TextField(
-                decoration: InputDecoration(labelText: 'Categoria'),
-                keyboardType: TextInputType.number,
-                controller: null,
-                onSubmitted: (_) => null,
+              Row(
+                children: <Widget>[
+                  Container(
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width * 0.70,
+                      child: DropDownCategoria()),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    color: Colors.grey,
+                    child: InkWell(
+                      child: Icon(Icons.add, size: 50),
+                      onTap: () => print('Adicionando categorias'),
+                    ),
+                  ),
+                ],
               ),
               TextField(
                 decoration: InputDecoration(labelText: 'Observação'),
