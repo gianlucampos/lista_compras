@@ -9,7 +9,7 @@ class DropDownCategoria extends StatefulWidget {
 
 class DropDownCategoriaState extends State<DropDownCategoria> {
   static List<Categoria> categorias = [
-    Categoria('Frutas')
+    Categoria(id: '1', nome: 'Frutas')
   ]; //Tem que puxar do banco
   Categoria valorSelecionado = categorias.elementAt(0);
 

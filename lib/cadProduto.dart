@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:lista_compras/db/db_helper.dart';
+import 'package:lista_compras/models/Categoria.dart';
 import 'package:lista_compras/widgets/DropDownCategoria.dart';
 import 'package:lista_compras/widgets/DropDownUnidade.dart';
 
 class CadProduto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Categoria categoria = new Categoria(id: '2', nome: 'Higiene');
     return Scaffold(
       appBar: AppBar(
         title: Text('Novo Item'),
@@ -97,7 +100,11 @@ class CadProduto extends StatelessWidget {
                     color: Colors.grey,
                     child: InkWell(
                       child: Icon(Icons.add, size: 50),
-                      onTap: () => print('Adicionando categorias'),
+                      onTap: () =>
+                          DBHelper.insert('categoria', {
+                            'id': categoria.id,
+                            'nome': categoria.nome,
+                          }),
                     ),
                   ),
                 ],
