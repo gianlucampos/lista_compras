@@ -9,7 +9,7 @@ import 'package:lista_compras/widgets/DropDownUnidade.dart';
 class CadProduto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Categoria categoria = new Categoria(id: '2', nome: 'Higiene');
+    final Categoria categoria = new Categoria(id: '1', nome: 'Higiene');
     return Scaffold(
       appBar: AppBar(
         title: Text('Novo Item'),
@@ -101,10 +101,11 @@ class CadProduto extends StatelessWidget {
                     child: InkWell(
                       child: Icon(Icons.add, size: 50),
                       onTap: () =>
-                          DBHelper.insert('categoria', {
+                          DBHelper.create('categoria', {
                             'id': categoria.id,
                             'nome': categoria.nome,
                           }),
+//                          DBHelper.insert(categoria),
                     ),
                   ),
                 ],

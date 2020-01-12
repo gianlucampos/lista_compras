@@ -1,32 +1,72 @@
-import 'package:path/path.dart' as path;
-import 'package:sqflite/sqflite.dart' as sql;
+import 'package:lista_compras/models/Categoria.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 class DBHelper {
-  static Future<Database> database() async {
-    final caminhoBanco = await sql.getDatabasesPath();
-    return sql.openDatabase(path.join(caminhoBanco, 'listaCompras.db'),
-        onCreate: (db, version) {
-      return db
-          .execute('CREATE TABLE categoria(id TEXT PRIMARY KEY, nome TEXT)');
-    }, version: 1);
+  static Database _database;
+
+  // Verifica se já existe conexão com o banco
+  static Future<Database> db() async {
+    if (_database != null) return _database;
+    await _initDB().then((db) {
+      _database = db;
+    });
+    return _database;
   }
 
-  static Future<void> insert(String table, Map<String, Object> data) async {
-    final db = await DBHelper.database();
-    db.insert(table, data, conflictAlgorithm: sql.ConflictAlgorithm.replace);
-    print('Realizado insert');
+  static Future<Database> _initDB() async {
+    final caminhoBanco = await getDatabasesPath();
+    final path = join(caminhoBanco, 'listaCompras.db');
+    return await openDatabase(path, onCreate: _onCreate, version: 1);
   }
 
-  insertRaw(dynamic object) async {
-    final db = await DBHelper.database();
-    var result = await db.rawInsert("INSERT INTO Categoria (id,nome)"
+  static _onCreate(Database db, int version) async {
+    return db
+        .execute('CREATE TABLE Categoria(id TEXT PRIMARY KEY, nome TEXT)');
+  }
+
+  //Operações CRUD, futuramente criar e colocar nos DAOs
+
+  //Insert útil para json
+  static Future<void> create(String table, Map<String, Object> data) async {
+    final db = await DBHelper.db();
+    db.insert(table, data, conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
+  static createRaw(dynamic object) async {
+    final db = await DBHelper.db();
+    var result = await db.rawInsert("INSERT INTO Categoria (id,nome) "
         " VALUES (${object.id},${object.nome})");
     return result;
   }
 
-  static Future<List<Map<String, dynamic>>> getData(String table) async {
-    final db = await DBHelper.database();
+  static Future<int> insert(Categoria object) async {
+    final db = await DBHelper.db();
+    var result = await db.insert('Categoria', object.toMap());
+    return result;
+  }
+
+  // Retrieve
+  static Future<List<Map<String, dynamic>>> retrieve(String table) async {
+    final db = await DBHelper.db();
+    //		var result = await db.rawQuery('SELECT * FROM $table order by id');
     return db.query(table);
+  }
+
+  // Update
+  static Future<int> update(dynamic object) async {
+    var db = await DBHelper.db();
+    var result = await db.update(object.runtimeType.toString(), object.toMap(),
+        where: 'id = ?', whereArgs: [object.id]);
+    return result;
+  }
+
+  // Delete
+  static Future<int> delete(int id, String tableName) async {
+    var db = await DBHelper.db();
+    int result = await db.delete(tableName, where: 'id = ?', whereArgs: [id]);
+//    int result = await db.rawDelete('DELETE FROM $tableName WHERE id = $id');
+    return result;
   }
 }
