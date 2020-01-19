@@ -9,7 +9,7 @@ import 'package:lista_compras/widgets/DropDownUnidade.dart';
 class CadProduto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Categoria categoria = new Categoria(id: '1', nome: 'Higiene');
+    final Categoria categoria = new Categoria(id: '3', nome: 'Carne');
     return Scaffold(
       appBar: AppBar(
         title: Text('Novo Item'),
@@ -122,12 +122,26 @@ class CadProduto extends StatelessWidget {
                 controller: null,
                 onSubmitted: (_) => null,
               ),
+              Container(
+                color: Colors.red,
+                width: 100,
+                height: 100,
+                child: GestureDetector(onTap: () => _categorias()),
+              )
             ],
           ),
         ),
       ),
     );
   }
+}
+
+_categorias() async {
+  List<Categoria> cats = new List<Categoria>();
+  var categorias = await DBHelper.retrieve('Categoria');
+//  categorias.forEach((item) => cats.add(Categoria.fromMap(item)));
+  cats = categorias.map((c) => Categoria.fromMap(c)).toList();
+  print(cats);
 }
 
 class CheckBoxWidget extends StatefulWidget {

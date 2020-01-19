@@ -47,7 +47,7 @@ class DBHelper {
     return result;
   }
 
-  // Retrieve
+  // Retrieve genérico para utilizar com o provider
   static Future<List<Map<String, dynamic>>> retrieve(String table) async {
     final db = await DBHelper.db();
     //		var result = await db.rawQuery('SELECT * FROM $table order by id');

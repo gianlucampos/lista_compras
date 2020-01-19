@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lista_compras/db/db_helper.dart';
 
 import '../models/Categoria.dart';
 
@@ -8,10 +9,11 @@ class DropDownCategoria extends StatefulWidget {
 }
 
 class DropDownCategoriaState extends State<DropDownCategoria> {
-  static List<Categoria> categorias = [
-    Categoria(id: '1', nome: 'Frutas')
-  ]; //Tem que puxar do banco
-  Categoria valorSelecionado = categorias.elementAt(0);
+  static List<Categoria> _categorias = _getCategorias();
+
+//  static List<Categoria> _categorias = [Categoria(id: '1', nome: 'Frutas')];
+  Categoria valorSelecionado =
+  _categorias == null ? null : _categorias.elementAt(0);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,9 @@ class DropDownCategoriaState extends State<DropDownCategoria> {
             valorSelecionado = valor;
           });
         },
-        items: categorias.map((Categoria categoria) {
+        items: _categorias == null
+            ? null
+            : _categorias.map((Categoria categoria) {
           return DropdownMenuItem<Categoria>(
             value: categoria,
             child: Text(categoria.nome),
@@ -37,3 +41,13 @@ class DropDownCategoriaState extends State<DropDownCategoria> {
         }).toList());
   }
 }
+
+_getCategorias() async {
+  List<Categoria> cats = new List<Categoria>();
+  var categorias = await DBHelper.retrieve('Categoria');
+  categorias.forEach((item) => cats.add(Categoria.fromMap(item)));
+//  cats = categorias.map((c) => Categoria.fromMap(c)).toList();
+  return cats;
+}
+
+

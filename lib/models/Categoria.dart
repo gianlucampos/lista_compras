@@ -6,17 +6,24 @@ class Categoria {
 
   Categoria({@required this.id, @required this.nome});
 
-  // Insert
+  // Serializa o objeto
   Map<String, dynamic> toMap() =>
       {
         "id": id,
         "nome": nome,
       };
 
-  // Retrieve
+  // Deserializa o objeto
   factory Categoria.fromMap(Map<String, dynamic> json) =>
       new Categoria(
         id: json["id"],
         nome: json["nome"],
       );
+
+  @override
+  String toString() {
+    return 'Categoria{id: $id, nome: $nome}';
+  }
+
+
 }
