@@ -9,14 +9,16 @@ class DropDownCategoria extends StatefulWidget {
 }
 
 class DropDownCategoriaState extends State<DropDownCategoria> {
-  static List<Categoria> _categorias = _getCategorias();
-
-//  static List<Categoria> _categorias = [Categoria(id: '1', nome: 'Frutas')];
-  Categoria valorSelecionado =
-  _categorias == null ? null : _categorias.elementAt(0);
+  static List<Categoria> _categorias = List<Categoria>();
 
   @override
   Widget build(BuildContext context) {
+    if (_categorias.isEmpty) {
+      _getCategorias();
+    }
+    Categoria valorSelecionado =
+    _categorias.isEmpty ? null : _categorias.elementAt(0);
+
     return DropdownButtonFormField<Categoria>(
         decoration: InputDecoration(
           isDense: true,
@@ -40,14 +42,14 @@ class DropDownCategoriaState extends State<DropDownCategoria> {
           );
         }).toList());
   }
+
+  //Utilizar forEach ou Map
+  _getCategorias() async {
+    DBHelper.retrieve('Categoria').then((categorias) {
+      setState(() {
+//        categorias.forEach((item) => _categorias.add(Categoria.fromMap(item)));
+        _categorias = categorias.map((c) => Categoria.fromMap(c)).toList();
+      });
+    });
+  }
 }
-
-_getCategorias() async {
-  List<Categoria> cats = new List<Categoria>();
-  var categorias = await DBHelper.retrieve('Categoria');
-  categorias.forEach((item) => cats.add(Categoria.fromMap(item)));
-//  cats = categorias.map((c) => Categoria.fromMap(c)).toList();
-  return cats;
-}
-
-
