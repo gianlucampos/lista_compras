@@ -14,46 +14,29 @@ class _CadCategoriaState extends State<CadCategoria> {
       appBar: AppBar(
         title: Text('Categorias'),
       ),
-
-//      body: ListView(
-//        children: <Widget>[
-//          GestureDetector(
-//            child: Container(
-//              height: MediaQuery.of(context).size.height * 0.08,
-//              child: ListTile(
-//                leading: Icon(Icons.menu),
-//                title: Text('Frutas'),
-//              ),
-//            ),
-//          ),
-//          Divider(thickness: 0.4, color: Colors.grey),
-//          Container(
-//            height: MediaQuery.of(context).size.height * 0.08,
-//            child: ListTile(leading: Icon(Icons.menu), title: Text('Frutas')),
-//          ),
-//          Divider(thickness: 0.4, color: Colors.grey),
-//        ],
-//      ),
-
       body: DragList<String>(
         items: items,
-        itemExtent: 80,
+        itemExtent: MediaQuery
+            .of(context)
+            .size
+            .height * 0.10,
         builder: (_, item, handle) {
-          return Container(
-            height: 80,
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Container(
-                child: Row(children: [
-                  handle,
-                  Expanded(child: Text(item)),
-                ]),
+          return Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.grey),
+                ),
               ),
+              child: Row(children: [
+                handle,
+                Expanded(child: Text(item)),
+              ]),
             ),
           );
         },
       ),
-
       floatingActionButton: FloatingActionButton(
           onPressed: () {
 //            Navigator.push(
