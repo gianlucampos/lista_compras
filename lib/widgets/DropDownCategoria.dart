@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lista_compras/db/db_helper.dart';
 
+import '../db/db_helper.dart';
 import '../models/Categoria.dart';
 
 class DropDownCategoria extends StatefulWidget {

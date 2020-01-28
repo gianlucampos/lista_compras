@@ -1,7 +1,8 @@
-import 'package:lista_compras/models/Categoria.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
+
+import '../models/Categoria.dart';
 
 class DBHelper {
   static Database _database;
@@ -22,8 +23,11 @@ class DBHelper {
   }
 
   static _onCreate(Database db, int version) async {
-    return db
-        .execute('CREATE TABLE Categoria(id TEXT PRIMARY KEY, nome TEXT)');
+    await db.execute('CREATE TABLE Categoria(id TEXT PRIMARY KEY, nome TEXT)');
+    await db
+        .rawInsert("INSERT INTO Categoria (id, nome) VALUES ('1','Frutas');");
+    await db
+        .rawInsert("INSERT INTO Categoria (id, nome) VALUES ('2','Legumes');");
   }
 
   //Operações CRUD, futuramente criar e colocar nos DAOs

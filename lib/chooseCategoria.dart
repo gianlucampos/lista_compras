@@ -1,6 +1,7 @@
 import 'package:drag_list/drag_list.dart';
 import 'package:flutter/material.dart';
-import 'package:lista_compras/cadCategoria.dart';
+
+import './cadCategoria.dart';
 
 class ChooseCategoria extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class _ChooseCategoriaState extends State<ChooseCategoria> {
   @override
   Widget build(BuildContext context) {
     final List<String> items = ['Frutas', 'Legumes'];
+    //Trazer do banco
     return Scaffold(
       appBar: AppBar(
         title: Text('Categorias'),
