@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:lista_compras/cadCategoria.dart';
-import 'package:lista_compras/widgets/DropDownCategoria.dart';
-import 'package:lista_compras/widgets/DropDownUnidade.dart';
+
+import './chooseCategoria.dart';
+import './widgets/DropDownCategoria.dart';
+import './widgets/DropDownUnidade.dart';
 
 class CadProduto extends StatelessWidget {
   @override
@@ -102,7 +103,7 @@ class CadProduto extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => CadCategoria()))),
+                                    builder: (context) => ChooseCategoria()))),
                   ),
                 ],
               ),
