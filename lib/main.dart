@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './telaInicio.dart';
+import 'views/HomeScreen.dart';
 import 'tests/testeWidgets.dart';
 
 void main() => runApp(MyApp());

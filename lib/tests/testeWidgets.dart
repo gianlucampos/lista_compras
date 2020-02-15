@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../cadProduto.dart';
+import '../forms/CadProduto.dart';
 import '../main.dart';
 
 void main() => runApp(TesteApp());

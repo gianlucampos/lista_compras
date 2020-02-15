@@ -1,7 +1,7 @@
 import 'package:drag_list/drag_list.dart';
 import 'package:flutter/material.dart';
 
-import './cadCategoria.dart';
+import '../forms/CadCategoria.dart';
 
 class ChooseCategoria extends StatefulWidget {
   @override

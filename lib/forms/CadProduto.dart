@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
-import './chooseCategoria.dart';
-import './widgets/DropDownCategoria.dart';
-import './widgets/DropDownUnidade.dart';
+import '../forms/ChooseCategoria.dart';
+import '../widgets/DropDownCategoria.dart';
+import '../widgets/DropDownUnidade.dart';
 
 class CadProduto extends StatelessWidget {
   @override
