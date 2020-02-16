@@ -1,7 +1,6 @@
 import 'package:drag_list/drag_list.dart';
 import 'package:flutter/material.dart';
-
-import '../forms/CadCategoria.dart';
+import '../forms/CategoriaCad.dart';
 
 class ChooseCategoria extends StatefulWidget {
   @override
@@ -42,7 +41,7 @@ class _ChooseCategoriaState extends State<ChooseCategoria> {
         backgroundColor: Colors.blue,
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => CadCategoria()));
+              context, MaterialPageRoute(builder: (context) => CategoriaCad()));
         },
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../forms/CadProduto.dart';
+import '../forms/ProdutoCad.dart';
 import '../widgets/Totalizador.dart';
 
 class TelaInicio extends StatelessWidget {
