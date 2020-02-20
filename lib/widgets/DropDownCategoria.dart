@@ -13,11 +13,9 @@ class DropDownCategoriaState extends State<DropDownCategoria> {
 
   @override
   Widget build(BuildContext context) {
-    if (_categorias.isEmpty) {
-      _getCategorias();
-    }
+    _getCategorias();
     Categoria valorSelecionado =
-    _categorias.isEmpty ? null : _categorias.elementAt(0);
+        _categorias.isEmpty ? null : _categorias.elementAt(0);
 
     return DropdownButtonFormField<Categoria>(
         decoration: InputDecoration(
@@ -36,11 +34,11 @@ class DropDownCategoriaState extends State<DropDownCategoria> {
         items: _categorias == null
             ? null
             : _categorias.map((Categoria categoria) {
-          return DropdownMenuItem<Categoria>(
-            value: categoria,
-            child: Text(categoria.nome),
-          );
-        }).toList());
+                return DropdownMenuItem<Categoria>(
+                  value: categoria,
+                  child: Text(categoria.nome),
+                );
+              }).toList());
   }
 
   _getCategorias() async {

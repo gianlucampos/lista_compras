@@ -18,7 +18,6 @@ class _ChooseCategoriaState extends State<ChooseCategoria> {
     if (_categorias.isEmpty) {
       _getCategorias();
     }
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Categorias'),
