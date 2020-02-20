@@ -1,22 +1,20 @@
 import 'package:flutter/cupertino.dart';
 
 class Categoria {
-  final String id;
+  final int id;
   final String nome;
 
-  Categoria({@required this.id, @required this.nome});
+  Categoria({this.id, @required this.nome});
 
   // Serializa o objeto
-  Map<String, dynamic> toMap() =>
-      {
+  Map<String, dynamic> toMap() => {
         "id": id,
         "nome": nome,
       };
 
   // Deserializa o objeto
-  factory Categoria.fromMap(Map<String, dynamic> json) =>
-      new Categoria(
-        id: json["id"],
+  factory Categoria.fromMap(Map<String, dynamic> json) => new Categoria(
+        id: json["id"] as int,
         nome: json["nome"],
       );
 
@@ -24,6 +22,4 @@ class Categoria {
   String toString() {
     return 'Categoria{id: $id, nome: $nome}';
   }
-
-
 }

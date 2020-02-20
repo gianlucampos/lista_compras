@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:lista_compras/db/db_helper.dart';
+import 'package:lista_compras/models/Categoria.dart';
 
 import 'CategoriaChoose.dart';
 
@@ -18,7 +20,9 @@ class CategoriaCad extends StatelessWidget {
             icon: Icon(Icons.check),
             onPressed: () {
               if (_formKey.currentState.validate()) {
-//                print(_categoria.text);
+                //  print(_categoria.text);
+                final categoria = Categoria(nome: _categoria.text);
+                DBHelper.create('Categoria', categoria.toMap());
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ChooseCategoria()));
               }

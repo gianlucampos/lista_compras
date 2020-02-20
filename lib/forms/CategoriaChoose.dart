@@ -1,5 +1,7 @@
 import 'package:drag_list/drag_list.dart';
 import 'package:flutter/material.dart';
+import '../db/db_helper.dart';
+import '../models/Categoria.dart';
 import '../forms/CategoriaCad.dart';
 
 class ChooseCategoria extends StatefulWidget {
@@ -8,10 +10,15 @@ class ChooseCategoria extends StatefulWidget {
 }
 
 class _ChooseCategoriaState extends State<ChooseCategoria> {
+  List<Categoria> _categorias = List<Categoria>();
+  List<String> items = new List<String>();
+
   @override
   Widget build(BuildContext context) {
-    final List<String> items = ['Frutas', 'Legumes'];
-    //Trazer do banco
+    if (_categorias.isEmpty) {
+      _getCategorias();
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Categorias'),
@@ -45,5 +52,14 @@ class _ChooseCategoriaState extends State<ChooseCategoria> {
         },
       ),
     );
+  }
+
+  _getCategorias() async {
+    DBHelper.retrieve('Categoria').then((categorias) {
+      setState(() {
+        _categorias = categorias.map((c) => Categoria.fromMap(c)).toList();
+        _categorias.forEach((i) => items.add(i.nome));
+      });
+    });
   }
 }

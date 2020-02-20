@@ -23,11 +23,11 @@ class DBHelper {
   }
 
   static _onCreate(Database db, int version) async {
-    await db.execute('CREATE TABLE Categoria(id TEXT PRIMARY KEY, nome TEXT)');
+    await db.execute(
+        'CREATE TABLE Categoria(id INTEGER PRIMARY KEY AUTOINCREMENT , nome TEXT)');
+    await db.rawInsert("INSERT INTO Categoria (id, nome) VALUES (1,'Frutas');");
     await db
-        .rawInsert("INSERT INTO Categoria (id, nome) VALUES ('1','Frutas');");
-    await db
-        .rawInsert("INSERT INTO Categoria (id, nome) VALUES ('2','Legumes');");
+        .rawInsert("INSERT INTO Categoria (id, nome) VALUES (2,'Legumes');");
   }
 
   //Operações CRUD, futuramente criar e colocar nos DAOs

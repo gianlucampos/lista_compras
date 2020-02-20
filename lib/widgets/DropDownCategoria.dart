@@ -43,11 +43,9 @@ class DropDownCategoriaState extends State<DropDownCategoria> {
         }).toList());
   }
 
-  //Utilizar forEach ou Map
   _getCategorias() async {
     DBHelper.retrieve('Categoria').then((categorias) {
       setState(() {
-//        categorias.forEach((item) => _categorias.add(Categoria.fromMap(item)));
         _categorias = categorias.map((c) => Categoria.fromMap(c)).toList();
       });
     });
