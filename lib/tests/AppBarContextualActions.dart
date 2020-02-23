@@ -1,33 +1,24 @@
 import 'package:flutter/material.dart';
 
-class AppBarContextual extends StatelessWidget {
+class AppBarContextual extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(home: MyPage());
-  }
+  _AppBarContextualState createState() => _AppBarContextualState();
 }
 
-class MyPage extends StatefulWidget {
-  @override
-  _MyPageState createState() => _MyPageState();
-}
+AppBar _defaultBar = AppBar(
+  title: Text('Categorias'),
+  backgroundColor: Colors.green,
+);
 
-class _MyPageState extends State<MyPage> {
-  static final AppBar _defaultBar = AppBar(
-    title: Text('Inbox'),
-    actions: <Widget>[Icon(Icons.search), Icon(Icons.more_vert)],
-    backgroundColor: Colors.black,
-  );
+AppBar _selectBar = AppBar(
+  actions: <Widget>[
+    IconButton(icon: Icon(Icons.edit), onPressed: () {}),
+    IconButton(icon: Icon(Icons.delete), onPressed: () {})
+  ],
+  backgroundColor: Colors.teal,
+);
 
-  static final AppBar _selectBar = AppBar(
-    title: Text('1'),
-    actions: <Widget>[
-      Icon(Icons.edit),
-      Icon(Icons.delete),
-    ],
-    backgroundColor: Colors.deepPurple,
-  );
-
+class _AppBarContextualState extends State<AppBarContextual> {
   AppBar _appBar = _defaultBar;
 
   @override
