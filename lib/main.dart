@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'tests/mainTest.dart';
 import 'views/HomeScreen.dart';
-import 'tests/testeWidgets.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,9 +14,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: TelaInicio(),
+//      home: TelaInicio(),
+      home: TelaTeste(),
       routes: {
-        'Testes': (context) => TesteApp(),
+        'Testes': (context) => TelaTeste(),
+        'Main App': (context) => TelaInicio(),
       },
     );
   }

@@ -21,6 +21,7 @@ class _ChooseCategoriaState extends State<ChooseCategoria> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Categorias'),
+
       ),
       body: DragList<String>(
         items: items,
