@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import '../tests/MultiSelectionList.dart';
+import '../views/HomeScreen.dart';
 
 import 'AppBarContextualActions.dart';
 import 'DropDownButtonFormFieldWidget.dart';
@@ -8,58 +10,48 @@ class TelaTeste extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text(
-        'Testes',
-      )),
+      appBar: AppBar(title: Text('Testes')),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        child: Wrap(
           children: <Widget>[
-            GestureDetector(
-              child: Container(
-                child: Text(
-                  'Main',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 40,
-                  ),
-                ),
-                color: Colors.red,
-                padding: EdgeInsets.all(20),
-                alignment: Alignment.topLeft,
-              ),
-              onTap: () {
-                Navigator.pushNamed(context, 'Main App');
-              },
-            ),
-            Flexible(
-              child: Container(
-                  alignment: Alignment.topLeft,
-                  child: Text('DropDownButtonFormField')),
-            ),
+            GenericWidget('Main', TelaInicio(), Colors.amber),
+            GenericWidget('App Bar', AppBarContextual(), Colors.amberAccent),
+            GenericWidget('Multi Selection', MultiSelection(), Colors.amberAccent),
             DropDownButtonFormFieldWidget(),
-            GestureDetector(
-              child: Container(
-                child: Text(
-                  'App Bar',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 40,
-                  ),
-                ),
-                color: Colors.green,
-                padding: EdgeInsets.all(20),
-                alignment: Alignment.topLeft,
-              ),
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => AppBarContextual()));
-              },
-            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class GenericWidget extends StatelessWidget {
+  final String nomeComponente;
+  final Widget componente;
+  final Color cor;
+
+  GenericWidget(this.nomeComponente, this.componente, this.cor);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.5,
+        child: Text(
+          nomeComponente,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 40,
+          ),
+        ),
+        color: cor,
+        padding: EdgeInsets.all(20),
+        alignment: Alignment.topLeft,
+      ),
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => componente));
+      },
     );
   }
 }
