@@ -7,8 +7,8 @@ class MultiSelection extends StatefulWidget {
 }
 
 class _MultiSelectionState extends State<MultiSelection> {
-  bool longPressFlag = false;
-  List<Element> indexList = [
+  bool selecaoAtivada = false;
+  List<Element> elementos = [
     Element(isSelected: false),
     Element(isSelected: false),
     Element(isSelected: false)
@@ -16,34 +16,38 @@ class _MultiSelectionState extends State<MultiSelection> {
 
   void longPress() {
     setState(() {
-      longPressFlag = indexList.isNotEmpty;
+      selecaoAtivada = elementos.any((e) => e.isSelected);
     });
   }
 
   void onElementSelected(int index) {
     setState(() {
-      indexList[index].isSelected = !indexList[index].isSelected;
+      elementos[index].isSelected = !elementos[index].isSelected;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    print(selecaoAtivada);
     return Scaffold(
       appBar: AppBar(
         title: Text("Categorias"),
       ),
-      body: ListView.builder(
-        itemCount: indexList.length,
+      body: ListView.separated(
+        itemCount: elementos.length,
         itemBuilder: (context, index) {
           return CustomWidget(
             index: index,
-            isSelected: indexList[index].isSelected,
-            longPressEnabled: longPressFlag,
+            isSelected: elementos[index].isSelected,
+            longPressEnabled: selecaoAtivada,
             callback: () {
               onElementSelected(index);
               longPress();
             },
           );
+        },
+        separatorBuilder: (context, index) {
+          return Divider(height: 1, color: Colors.grey,);
         },
       ),
     );
@@ -56,7 +60,7 @@ class CustomWidget extends StatefulWidget {
   final bool longPressEnabled;
   final VoidCallback callback;
 
-  const CustomWidget(
+  CustomWidget(
       {Key key,
       this.index,
       this.isSelected,
@@ -81,14 +85,12 @@ class _CustomWidgetState extends State<CustomWidget> {
         }
       },
       child: Container(
-        margin: EdgeInsets.all(5.0),
         child: ListTile(
-          title: Text("Title ${widget.index}"),
-          subtitle: Text("Description ${widget.index}"),
+          leading: Icon(Icons.format_align_justify),
+          title: Text("Categoria ${widget.index}"),
         ),
         decoration: widget.isSelected
-            ? BoxDecoration(
-                color: Colors.black38, border: Border.all(color: Colors.black))
+            ? BoxDecoration(color: Colors.green[300])
             : BoxDecoration(),
       ),
     );

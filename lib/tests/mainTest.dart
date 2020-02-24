@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
 import '../tests/MultiSelectionList.dart';
 import '../views/HomeScreen.dart';
-
 import 'AppBarContextualActions.dart';
 import 'DropDownButtonFormFieldWidget.dart';
 
@@ -16,7 +16,8 @@ class TelaTeste extends StatelessWidget {
           children: <Widget>[
             GenericWidget('Main', TelaInicio(), Colors.amber),
             GenericWidget('App Bar', AppBarContextual(), Colors.amberAccent),
-            GenericWidget('Multi Selection', MultiSelection(), Colors.amberAccent),
+            GenericWidget(
+                'Multi Selection', MultiSelection(), Colors.amberAccent),
             DropDownButtonFormFieldWidget(),
           ],
         ),
