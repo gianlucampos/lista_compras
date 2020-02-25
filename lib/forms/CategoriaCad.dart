@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:lista_compras/db/db_helper.dart';
-import 'package:lista_compras/models/Categoria.dart';
 
+import '../db/db_helper.dart';
+import '../models/Categoria.dart';
 import 'CategoriaChoose.dart';
 
 class CategoriaCad extends StatelessWidget {
