@@ -11,7 +11,6 @@ class ChooseCategoria extends StatefulWidget {
 
 class _ChooseCategoriaState extends State<ChooseCategoria> {
   List<Categoria> _categorias = List<Categoria>();
-  List<String> items = new List<String>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +22,12 @@ class _ChooseCategoriaState extends State<ChooseCategoria> {
         title: Text('Categorias'),
 
       ),
-      body: DragList<String>(
-        items: items,
+      body: DragList<Categoria>(
+        items: _categorias,
         itemExtent: MediaQuery.of(context).size.height * 0.10,
         builder: (_, item, handle) {
           return Padding(
-            padding: const EdgeInsets.all(4.0),
+            padding: EdgeInsets.all(1.0),
             child: Container(
               decoration: const BoxDecoration(
                 border: Border(
@@ -37,7 +36,7 @@ class _ChooseCategoriaState extends State<ChooseCategoria> {
               ),
               child: Row(children: [
                 handle,
-                Expanded(child: Text(item)),
+                Expanded(child: Text(item.nome)),
               ]),
             ),
           );
@@ -58,7 +57,6 @@ class _ChooseCategoriaState extends State<ChooseCategoria> {
     DBHelper.retrieve('Categoria').then((categorias) {
       setState(() {
         _categorias = categorias.map((c) => Categoria.fromMap(c)).toList();
-        _categorias.forEach((i) => items.add(i.nome));
       });
     });
   }
