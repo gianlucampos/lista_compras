@@ -22,7 +22,7 @@ class TelaTeste extends StatelessWidget {
             GenericWidget('MultiSelection AppBar', MultiSelectionAppBar(),
                 Colors.black26),
             GenericWidget(
-                'ReordableList', CustomDragList(), Colors.black54),
+                'ReordableList', CustomDragList('Categorias'), Colors.black54),
             DropDownButtonFormFieldWidget(),
           ],
         ),

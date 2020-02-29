@@ -1,36 +1,22 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reorderable_list/flutter_reorderable_list.dart';
 
 class CustomDragList extends StatefulWidget {
-  CustomDragList({Key key, this.title}) : super(key: key);
-
   final String title;
+
+  CustomDragList(this.title);
 
   @override
   _CustomDragListState createState() => _CustomDragListState();
 }
 
-class ItemData {
-  ItemData(this.title, this.key);
-
-  final String title;
-
-  // Each item in reorderable list needs stable and unique key
-  final Key key;
-}
-
 class _CustomDragListState extends State<CustomDragList> {
-  List<ItemData> _items;
+  List<ItemData> _items = List();
 
   _CustomDragListState() {
-    _items = List();
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 15; ++i) {
       String label = "List item $i";
-      if (i == 5) {
-        label += ". This item has a long label and will be wrapped.";
-      }
-      _items.add(ItemData(label, ValueKey(i)));
+      _items.add(ItemData(ValueKey(i), label));
     }
   }
 
@@ -44,24 +30,17 @@ class _CustomDragListState extends State<CustomDragList> {
 
     final draggedItem = _items[draggingIndex];
     setState(() {
-      debugPrint("Reordering $item -> $newPosition");
       _items.removeAt(draggingIndex);
       _items.insert(newPositionIndex, draggedItem);
     });
     return true;
   }
 
-  void _reorderDone(Key item) {
-    final draggedItem = _items[_indexOfKey(item)];
-    debugPrint("Reordering finished for ${draggedItem.title}}");
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Categorias')),
+      appBar: AppBar(title: Text(widget.title)),
       body: ReorderableList(
         onReorder: this._reorderCallback,
-        onReorderDone: this._reorderDone,
         child: CustomScrollView(
           slivers: <Widget>[
             SliverPadding(
@@ -87,6 +66,13 @@ class _CustomDragListState extends State<CustomDragList> {
   }
 }
 
+class ItemData {
+  final Key key;
+  final String title;
+
+  ItemData(this.key, this.title);
+}
+
 class Item extends StatelessWidget {
   Item({
     this.data,
@@ -103,7 +89,6 @@ class Item extends StatelessWidget {
 
     if (state == ReorderableItemState.dragProxy ||
         state == ReorderableItemState.dragProxyFinished) {
-      // slightly transparent background white dragging (just like on iOS)
       decoration = BoxDecoration(color: Color(0xD0FFFFFF));
     } else {
       bool placeholder = state == ReorderableItemState.placeholder;
