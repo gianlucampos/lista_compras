@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 import '../views/HomeScreen.dart';
 import 'AppBarContextualActions.dart';
-import 'CustomReordableListView2.dart';
+import 'CustomDragList.dart';
 import 'DropDownButtonFormFieldWidget.dart';
 import 'MultiSelectionList.dart';
 import 'MultiSelectionList_withAppBar.dart';
@@ -22,7 +22,7 @@ class TelaTeste extends StatelessWidget {
             GenericWidget('MultiSelection AppBar', MultiSelectionAppBar(),
                 Colors.black26),
             GenericWidget(
-                'ReordableList', CustomReordableListView2(), Colors.black54),
+                'ReordableList', CustomDragList(), Colors.black54),
             DropDownButtonFormFieldWidget(),
           ],
         ),
